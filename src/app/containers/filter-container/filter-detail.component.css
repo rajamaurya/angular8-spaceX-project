@@ -1,0 +1,12 @@
+.btn{
+   
+}
+
+button{
+    width: 100%;
+    padding:6px;
+    float: left;
+    color:white;
+    border-radius: 4px;
+    background-color: green;
+}

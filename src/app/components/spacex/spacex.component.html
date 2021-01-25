@@ -1,0 +1,38 @@
+
+<div class = "container" *ngIf="!isLoading; else loader">
+    <ng-container *ngIf="(spaceX$ | async)?.length > 0; else noContent">
+        <div *ngFor="let space of spaceX$ | async"  class="cards">
+            <div class="card">
+                <div class="img">
+                  <img [src]="space?.links?.mission_patch_small" alt="Avatar" style="width:100%">
+                </div>
+                
+                <div class="card-container">
+                  <h4><b>{{space?.mission_name}}</b></h4>
+                  <h4><b>Mission Ids:</b></h4>
+                        <li *ngFor="let id of space?.mission_id">
+                            {{id}}
+                        </li>
+                  <h4><b> Launch Year: {{space?.launch_year}}</b></h4>
+                  <h4><b> Successful Launch: </b> <span>{{space?.launch_success}}</span></h4> 
+                  <h4><b> Successful Landing: </b> <span>{{space?.launch_landing}}</span></h4> 
+                  
+                </div>
+              </div>
+        </div>
+        <!-- <div class = "footer-panel">
+          <app-footer></app-footer>
+      </div> -->
+      </ng-container>
+      <ng-template #noContent>
+        <div class="noContent"><span>No content available..</span></div>
+        <!-- <div class = "footer-panel">
+          <app-footer></app-footer>
+        </div> -->
+      </ng-template>
+      
+</div>
+<ng-template #loader>
+   <app-loader></app-loader>
+</ng-template>
+

@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-color: whitesmoke;
+}
+button{
+    border: none;
+    background: rgb(129, 216, 129);
+    color: white;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+    body {
+      background-color: whitesmoke;
+    }
+  }

@@ -1,0 +1,11 @@
+.footer{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+}
+.dev{
+    margin: 0px auto;
+    color: lightgray;
+    font-family: 'Times New Roman', Times, serif;
+}

@@ -1,0 +1,57 @@
+<div class= "container">
+    <header> {{header}} </header>
+    <div class="container-body">
+        <div class="launch">
+            <span>Launch Year</span>
+            <div class="underline"></div>
+        </div>
+        <div class = "row">
+          <div class="content" *ngFor = "let year of Years">
+                <div 
+                    *ngIf = "(+year) % 2 == 0; else odd"
+                    class = "button"
+                    >
+                    <app-filter-detail [year] = "year" ></app-filter-detail>
+                </div>
+                <ng-template #odd >
+                    <div
+                    [ngClass] = "year == selectedYear ?'selectedButton':'button'"
+                     >
+                        <app-filter-detail [year] = "year" ></app-filter-detail>
+                    </div>
+                    
+                </ng-template>
+                
+            </div>
+        </div>
+        <div class="launch">
+            <span>Successful Launch</span>
+            <div class="underline"></div>
+        </div>
+        <div class = "row">
+            <div class="content" *ngFor = "let launch of launchOptions">
+                <button
+                    [ngClass] = "launch == selectedLaunchStatus ?'selectedButton':'btn'"
+                    (click) = "launchHandler(launch)"
+                    >
+                      {{launch}}
+                </button>
+           </div>
+        </div>
+        <div class="launch">
+            <span>Successful Landing</span>
+            <div class="underline"></div>
+        </div>
+        <div class = "row">
+            <div class="content" *ngFor = "let landed of landingOptions">
+                <button
+                [ngClass] = "landed == selectedLandStatus ?'selectedButton':'btn'"
+                (click) = "landingHandler(landed)"
+                >
+                    {{landed}}
+                </button>
+        </div>
+        </div>
+    
+</div>
+</div>
