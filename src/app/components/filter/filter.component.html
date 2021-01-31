@@ -9,15 +9,15 @@
           <div class="content" *ngFor = "let year of Years">
                 <div 
                     *ngIf = "(+year) % 2 == 0; else odd"
-                    class = "button"
+                    [ngClass] = "isSelected(year) ?'selectedButton':'btn'"
                     >
-                    <app-filter-detail [year] = "year" ></app-filter-detail>
+                    <app-filter-detail [year] = "year" (eventEmitter) = eventlistener($event)></app-filter-detail>
                 </div>
                 <ng-template #odd >
                     <div
-                    [ngClass] = "year == selectedYear ?'selectedButton':'button'"
+                    [ngClass] = "isSelected(year) ?'selectedButton':'btn'"
                      >
-                        <app-filter-detail [year] = "year" ></app-filter-detail>
+                        <app-filter-detail [year] = "year" (eventEmitter) = eventlistener($event)></app-filter-detail>
                     </div>
                     
                 </ng-template>

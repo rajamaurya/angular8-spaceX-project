@@ -63,7 +63,6 @@ header{
     background-color: rgb(129, 216, 129);
 }
 .btn{
-    width: 100%;
     padding:6px;
     margin-left: 10px;
     margin-right: 10px;
@@ -74,7 +73,7 @@ header{
     background-color: rgb(129, 216, 129);
 }
 .selectedButton{
-    width: 100%;
+    width: 60%;
     padding:6px;
     margin-left: 10px;
     margin-right: 10px;

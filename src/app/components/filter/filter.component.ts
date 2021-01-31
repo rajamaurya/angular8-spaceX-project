@@ -16,7 +16,12 @@ export class FilterComponent {
   selectedLaunchStatus: string;
   constructor(private appService: AppService){}
 
-
+  isSelected(year){
+   return year == this.selectedYear?true:false
+  }
+  eventlistener(e){
+    this.selectedYear = e;
+  }
   launchHandler(val: string){
     this.selectedLaunchStatus = val;
     const status = val == 'True'?true:false

@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import * as EventEmitter from 'events';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AppService } from 'src/app/app.service';
 
@@ -9,6 +8,7 @@ import { AppService } from 'src/app/app.service';
 })
 export class FilterDetailComponent implements OnInit {
  @Input() year : string;
+ @Output() eventEmitter: EventEmitter<any> = new EventEmitter();
  selectedYear: string;
  
  private eventListener = new BehaviorSubject<any>(null);
@@ -19,6 +19,7 @@ export class FilterDetailComponent implements OnInit {
 
  launchHandler(year : string){
    this.selectedYear = year;
+   this.eventEmitter.emit(this.selectedYear);
    const param = {
      launch_year: year
    }
