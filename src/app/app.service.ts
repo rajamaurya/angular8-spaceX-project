@@ -12,7 +12,7 @@ import { LoaderService } from './loader.service';
   export class AppService{
     
     //baseUrl = "https://api.spaceXdata.com/v3/launches";
-    baseUrl = "localhost:8080";
+    baseUrl = "http://localhost:8080/";
     private params = {};
 
     private spaceX = new BehaviorSubject<any>(null);

@@ -32,9 +32,6 @@ app.use(function (req, res, next) {
 });
 
 app.get('', async (req,res)=>{
-    console.log(req.params)
-    console.log(req.body)
-    console.log(req.query)
     try{
         let result  = await axios.get('https://api.spaceXdata.com/v3/launches');
         if(result){

@@ -8,9 +8,9 @@ export class HttpInterceptorService {
     constructor(){}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
-
-       if(request.url.includes('localhost:8080')){ //https://spacex-musk.herokuapp.com/
-           
+       const isMatch = request.url.includes('http://localhost:8080/');
+       if(isMatch){
+           console.log(isMatch);
            request = request.clone({
                url: "https://api.spaceXdata.com/v3/launches",
                setHeaders: {
