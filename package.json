@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~11.0.9",
     "@angular/router": "~11.0.9",
     "axios": "^0.21.1",
+    "circular-json": "^0.5.9",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "rxjs": "~6.6.0",

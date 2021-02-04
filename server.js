@@ -2,6 +2,7 @@ const express = require('express');
 const path  = require('path');
 const cors = require('cors');
 const axios = require('axios');
+const circularJSON =  require('circular-json');
 const app = express();
 
 const port = process.env.PORT || 8080;
@@ -35,11 +36,13 @@ app.get('', async (req,res)=>{
     try{
         let result  = await axios.get('https://api.spaceXdata.com/v3/launches');
         if(result){
-            res.status(200).send(result);
+            res.status(200).send(result['data'])
         }
+        
+        
     }catch(e){
        res.status(404).send({
-           message: `error ${e.message}`
+           msg: `error ${e.message}`
        })
     }
    
