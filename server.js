@@ -41,6 +41,7 @@ app.get('', async (req,res)=>{
                 status: "SUCCESS",
                 data: result['data']
             })
+            res.sendFile(path.join(__dirname + '/dist/index.html'));
         }
         
     }catch(e){
