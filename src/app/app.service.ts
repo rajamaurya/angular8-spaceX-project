@@ -11,9 +11,7 @@ import {environment} from '../environments/environment';
   })
 
   export class AppService{
-    
-    //baseUrl = "https://api.spaceXdata.com/v3/launches";
-    baseUrl =  environment.apiUrl + '/space-api';  //  "http://localhost:8080/";
+    baseUrl =  environment.apiUrl + 'space-api';
     private params = {};
 
     private spaceX = new BehaviorSubject<any>(null);
@@ -35,7 +33,7 @@ import {environment} from '../environments/environment';
     
     getSpaceXData(val){
          this.http.get(this.baseUrl,{params: val}).pipe(
-              map(data=> data),
+              map(data=> data['data']),
               catchError(this.handleError)
               ).subscribe(data=>{
             if(data != undefined){
@@ -54,8 +52,10 @@ import {environment} from '../environments/environment';
         
         return  this.http.get(this.baseUrl,{params: this.params}).pipe(
               map(data=> {
-                  this.spaceX.next(data);
-                  this.SetSpaceXInitialized(true);
+                  if(data['status'] == 'SUCCESS'){
+                    this.spaceX.next(data['data']);
+                    this.SetSpaceXInitialized(true);
+                  }
               }),
               catchError(this.handleError)
               );
