@@ -11,9 +11,8 @@ export class HttpInterceptorService {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
        const isMatch = request.url.includes(environment.apiUrl); // http://localhost:8080/
        if(isMatch){
-           console.log(isMatch);
            request = request.clone({
-               url: "https://api.spaceXdata.com/v3/launches",
+            //    url: "https://api.spaceXdata.com/v3/launches",
                setHeaders: {
                 'Content-Type': 'application/json',
                 }

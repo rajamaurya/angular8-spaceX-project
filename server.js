@@ -33,7 +33,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get('', async (req,res)=>{
+app.get('/space-api', async (req,res)=>{
     try{
         let result  = await axios.get('https://api.spaceXdata.com/v3/launches');
         if(result){
@@ -41,7 +41,6 @@ app.get('', async (req,res)=>{
                 status: "SUCCESS",
                 data: result['data']
             })
-            res.sendFile(path.join(__dirname + '/dist/index.html'));
         }
         
     }catch(e){
@@ -51,4 +50,8 @@ app.get('', async (req,res)=>{
     }
    
 
+})
+app.get('', async (req,res)=>{
+    res.sendFile(path.join(__dirname + '/dist/sapi/index.html'));
+  
 })

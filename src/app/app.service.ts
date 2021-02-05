@@ -13,7 +13,7 @@ import {environment} from '../environments/environment';
   export class AppService{
     
     //baseUrl = "https://api.spaceXdata.com/v3/launches";
-    baseUrl =  environment.apiUrl;  //  "http://localhost:8080/";
+    baseUrl =  environment.apiUrl + '/space-api';  //  "http://localhost:8080/";
     private params = {};
 
     private spaceX = new BehaviorSubject<any>(null);
@@ -46,6 +46,7 @@ import {environment} from '../environments/environment';
     }
 
     getFilteredSpaceXData(val){
+      
         this.ls.show();
         if(this.params != {}){
             this.params = {...this.params , ...val}
