@@ -16,7 +16,8 @@ app.use(cors());
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.setHeader('Access-Control-Allow-Origin', 'https://spacex-musk.herokuapp.com/');
+    //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -36,9 +37,11 @@ app.get('', async (req,res)=>{
     try{
         let result  = await axios.get('https://api.spaceXdata.com/v3/launches');
         if(result){
-            res.status(200).send(result['data'])
+            res.status(200).json({
+                status: "SUCCESS",
+                data: result['data']
+            })
         }
-        
         
     }catch(e){
        res.status(404).send({

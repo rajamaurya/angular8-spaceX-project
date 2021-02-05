@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { map, catchError } from 'rxjs/operators';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { LoaderService } from './loader.service';
+import {environment} from '../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +13,7 @@ import { LoaderService } from './loader.service';
   export class AppService{
     
     //baseUrl = "https://api.spaceXdata.com/v3/launches";
-    baseUrl = "http://localhost:8080/";
+    baseUrl =  environment.apiUrl;  //  "http://localhost:8080/";
     private params = {};
 
     private spaceX = new BehaviorSubject<any>(null);

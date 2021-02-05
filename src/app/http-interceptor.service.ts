@@ -2,13 +2,14 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpRequest } from "@angular
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Injectable()
 export class HttpInterceptorService {
     constructor(){}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
-       const isMatch = request.url.includes('http://localhost:8080/');
+       const isMatch = request.url.includes(environment.apiUrl); // http://localhost:8080/
        if(isMatch){
            console.log(isMatch);
            request = request.clone({
